@@ -1,7 +1,7 @@
 class Solution {
 public:
     int helper(vector<int> &nums, int i, int n, vector<int> &memo){
-        if(i>=n) return 0;
+        if(i>=n) return 0; // No more houses left to examine.
         if(memo[i]!=-1) return memo[i];
         
         return memo[i]= max(nums[i]+helper(nums, i+2, n, memo), helper(nums, i+1, n, memo));
