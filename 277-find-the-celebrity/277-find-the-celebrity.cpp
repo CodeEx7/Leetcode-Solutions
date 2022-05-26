@@ -12,12 +12,16 @@ public:
         }
         return true;
     }
+   // main working function
     int findCelebrity(int n) {
+        int celeb=0;
         for(int i=0;i<n;i++){
-            if(isceleb(i,n)){
-                return i;
+            if(knows(celeb,i)){
+                celeb=i;
             }
         }
+        if(isceleb(celeb,n)) 
+            return celeb;
         return -1;
     }
 };
