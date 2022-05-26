@@ -3,6 +3,7 @@
 
 class Solution {
 public:
+    //checking if it is really a celeb or not
     bool isceleb(int i, int n){
         for(int j=0;j<n;j++){
             if(i!=j){
@@ -12,7 +13,7 @@ public:
         }
         return true;
     }
-   // main working function
+   // main working function, Finding out possible celeb candidate
     int findCelebrity(int n) {
         int celeb=0;
         for(int i=0;i<n;i++){
@@ -25,3 +26,6 @@ public:
         return -1;
     }
 };
+
+//space O(1)
+//time O(n)
