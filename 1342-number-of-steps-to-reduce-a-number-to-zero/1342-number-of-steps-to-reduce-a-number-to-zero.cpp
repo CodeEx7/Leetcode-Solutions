@@ -3,12 +3,14 @@ public:
     int numberOfSteps(int num) {
         if(num==0) return 0;
         int step=0;
-        for(int i=1;i<=num;i=i*2){
-            if((i&num)!=0)
-                step+=2;
-            else
-                step+=1;
+        while(num>0){
+            if((num&1) != 1){
+                num=num>>1;;
+            }else{
+                num-=1;
+            }
+            step++;
         }
-        return step-1;
+        return step;
     }
 };
