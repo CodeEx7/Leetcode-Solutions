@@ -10,6 +10,9 @@
 
 class Solution {
 public:
+    //best approch till now.
+    
+    //Loved it.
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         int parentVal=root->val;
         
