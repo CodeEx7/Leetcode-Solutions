@@ -8,6 +8,9 @@ public:
       }
       long long ans=0;
       sort(v.begin(),v.end());
+        for(auto it:v){
+            cout<<it<<" ";
+        }
       for(int i=0;i<n;i++){
         ans+=v[i]*(i+1);
       }
