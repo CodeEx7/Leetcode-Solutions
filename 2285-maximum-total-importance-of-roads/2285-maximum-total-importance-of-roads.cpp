@@ -1,7 +1,7 @@
 class Solution {
 public:
     long long maximumImportance(int n, vector<vector<int>>& roads) {
-         vector<long long>v(n);
+         vector<long long>v(n,0);
       for(auto it:roads){
         v[it[0]]++;
         v[it[1]]++;
