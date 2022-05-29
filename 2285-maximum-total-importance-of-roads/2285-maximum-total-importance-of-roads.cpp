@@ -8,9 +8,9 @@ public:
       }
       long long ans=0;
       sort(deg.begin(),deg.end());
-        for(auto it:deg){
-            cout<<it<<" ";
-        }
+        // for(auto it:deg){
+        //     cout<<it<<" ";
+        // }
       for(int i=0;i<n;i++){
         ans+=deg[i]*(i+1);
       }
