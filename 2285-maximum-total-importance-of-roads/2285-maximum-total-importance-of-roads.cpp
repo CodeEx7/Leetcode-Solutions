@@ -1,18 +1,18 @@
 class Solution {
 public:
     long long maximumImportance(int n, vector<vector<int>>& roads) {
-         vector<long long>v(n,0);
+         vector<long long> deg(n,0);
       for(auto it:roads){
-        v[it[0]]++;
-        v[it[1]]++;
+        deg[it[0]]++;
+        deg[it[1]]++;
       }
       long long ans=0;
-      sort(v.begin(),v.end());
-        for(auto it:v){
+      sort(deg.begin(),deg.end());
+        for(auto it:deg){
             cout<<it<<" ";
         }
       for(int i=0;i<n;i++){
-        ans+=v[i]*(i+1);
+        ans+=deg[i]*(i+1);
       }
       return ans;
     }
