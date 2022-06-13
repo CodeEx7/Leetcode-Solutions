@@ -28,7 +28,5 @@ int helper(TreeNode* root){
         int summ=0;
         if(root==NULL) return summ;
         return helper(root);
-
-        return summ;
     }
 };
