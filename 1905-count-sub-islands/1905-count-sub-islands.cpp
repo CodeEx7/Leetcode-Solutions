@@ -8,6 +8,14 @@ public:
         
         grid[i][j]=0;
         
+        // for(int i=0;i<grid.size();i++){
+        //     for(int j=0;j<grid[0].size();j++){
+        //         cout<<grid[i][j]<<" ";
+        //     }
+        //     cout<<endl;
+        // }
+        // cout<<endl;
+        
         DFS(grid, i+1, j);
         DFS(grid, i, j+1);
         DFS(grid, i-1, j);
@@ -25,6 +33,13 @@ public:
                 }
             }
         }
+        // for(int i=0;i<m;i++){
+        //     for(int j=0;j<n;j++){
+        //         cout<<grid2[i][j]<<" ";
+        //     }
+        //     cout<<endl;
+        // }
+        
         //counting the remaining island in grid2
         int cnt=0;
         for(int i=0;i<m;i++){
@@ -35,6 +50,8 @@ public:
                 }
             }
         }
+        
+        
         return cnt;
     }
 };
