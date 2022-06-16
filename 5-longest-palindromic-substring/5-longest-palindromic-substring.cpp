@@ -22,13 +22,13 @@ public:
             for(int i=0;i< n-j;i++){  
                 int left=i; //start point
                 int right = i+j;  //ending point
-            if(dp[left+1][right-1]==1 && s[left]==s[right]){
-                dp[left][right]=1; 
-                start=i; 
-                end=j+1; 
+                if(dp[left+1][right-1]==1 && s[left]==s[right]){
+                    dp[left][right]=1; 
+                    start=i; 
+                    end=j+1; 
             }        
         }
     }
-   return s.substr(start, end);
+    return s.substr(start, end);
     }
 }; 
