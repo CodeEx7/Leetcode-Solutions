@@ -23,6 +23,6 @@ public:
 				}
 			}
 		}
-		return (locMax > 0 ? locMax-1 : -1);
+		return locMax-1;
 	}
 };
