@@ -31,17 +31,17 @@ public:
             
 			// traversing in all possible direction
             for(auto dir: dirs){
-                int x = curx + dir.first;
-                int y = cury + dir.second;
+                int nx = curx + dir.first;
+                int ny = cury + dir.second;
                 
 				// if the new position is valid
-                if(x>=0 and x<m and y>=0 and y<n){
+                if(nx>=0 and nx<m and ny>=0 and ny<n){
 				
 				// update the distance if previous distance is more than distance of current element + 1 (bcoz. we can move only 1 step at a time)
-                    if(res[x][y] > res[curx][cury] + 1){
-                        res[x][y] = res[curx][cury] + 1;
+                    if(res[nx][ny] > res[curx][cury] + 1){
+                        res[nx][ny] = res[curx][cury] + 1;
 						// adding result to queue to use to derive other distances
-                        q.push({x,y});
+                        q.push({nx,ny});
                     }
                 }
             }
