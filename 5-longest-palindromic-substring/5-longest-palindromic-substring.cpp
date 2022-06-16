@@ -1,36 +1,34 @@
 class Solution {
 public:
-     string longestPalindrome(string s) 
-{   
-    int len = s.size();
-    int dp[len][len];
-    memset(dp,0,sizeof(dp));
-    int end=1;
-    int start=0;
-	
-    for(int i=0;i<len;i++)
-    {
-        dp[i][i] = 1;
-    }
-    for(int i=0;i<len-1;i++)
-    {
-        if(s[i]==s[i+1])
-        { dp[i][i+1]=1;start=i;end=2;}
-    }
-    
-    for(int j=2;j<len;j++)
-    {
-        for(int i=0;i< len-j;i++)
-        {  
-            int left=i; //start point
-            int right = i+j;  //ending point
-            
-            if(dp[left+1][right-1]==1 && s[left]==s[right]) 
-            {
-                dp[left][right]=1; start=i; end=j+1; 
+    string longestPalindrome(string s) {
+        int n=s.size();
+        if(n==0) return "";
+        
+        vector<vector<int>> dp(n, vector<int> (n,0));
+        //filling thr Diagonal
+        for(int i=0;i<n;i++){
+            dp[i][i]=1;
+        }
+        int start=0, end=1;
+        //filling second upper diagonal
+        for(int i=0;i<n-1;i++){
+            if(s[i]==s[i+1]){
+                dp[i][i+1]=1;
+                start=i, end=2;
+            }
+        }
+        //filling remaining upper part
+        for(int j=2;j<n;j++){
+            for(int i=0;i< n-j;i++){  
+                int left=i; //start point
+                int right = i+j;  //ending point
+            if(dp[left+1][right-1]==1 && s[left]==s[right]){
+                dp[left][right]=1; 
+                start=i; 
+                end=j+1; 
             }        
         }
     }
    return s.substr(start, end);
-}
-};
+    }
+}; 
