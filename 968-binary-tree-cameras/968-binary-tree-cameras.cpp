@@ -13,17 +13,19 @@ class Solution {
 public:
     int minCameraCover(TreeNode* root) {
         int sum=0;
-        if(dfs(root,sum)==0)   sum++;// if root is not monitored, we place an additional camera here
+        if(dfs(root,sum)==0)   
+            sum++;// if root is not monitored, we place an additional camera here
         return sum;
     }
     
-    int dfs(TreeNode * tr, int& sum){
-        if(!tr) return 1;
-        int l=dfs(tr->left,sum), r=dfs(tr->right,sum);
-        if(l==0||r==0){// if at least 1 child is not monitored, we need to place a camera at current node 
+    int dfs(TreeNode * root, int& sum){
+        if(root==NULL) return 1;
+        int left=dfs(root->left,sum); 
+        int right=dfs(root->right,sum);
+        if(left==0||right==0){// if at least 1 child is not monitored, we need to place a camera at current node 
             sum++;
             return 2;
-        }else if(l==2||r==2){// if at least 1 child has camera, the current node is monitored. Thus, we don't need to place a camera here 
+        }else if(left==2||right==2){// if at least 1 child has camera, the current node is monitored. Thus, we don't need to place a camera here 
             return 1;
         }else{// if both children are monitored but have no camera, we don't need to place a camera here. We place the camera at its parent node at the higher level. 
             return 0;
