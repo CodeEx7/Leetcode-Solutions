@@ -1,13 +1,13 @@
 class WordDictionary {
 public:
     struct node{
-        array<node*,26> child;
-        bool isend=0;
+        node *child[26];
+        bool isend;
         node(){
-            for(int i=0;i<26;++i){
+            isend=false;
+            for(int i=0;i<26;i++){
                 child[i]=NULL;
             }
-            isend=0;
         }
     };
     node *root=NULL;
