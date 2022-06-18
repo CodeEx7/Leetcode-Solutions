@@ -2,26 +2,31 @@ class WordDictionary {
 public:
     struct node{
         node *child[26];
-        bool isend;
+        bool isEnd;
         node(){
-            isend=false;
+            isEnd=false;
             for(int i=0;i<26;i++){
                 child[i]=NULL;
             }
         }
     };
+    //creating root Node
     node *root=NULL;
+    
     WordDictionary() {
         root=new node();
     }
+    
     void addWord(string word) {
-        node *t=root;
-        for(char ch:word){
-            if(t->child[ch-'a']==NULL)
-                t->child[ch-'a']=new node();
-            t=t->child[ch-'a'];
+        node *curr=root;
+        for(int i=0;i<word.size();i++){
+            int idx=word[i]-'a';
+            if(curr->child[idx]==NULL){
+                curr->child[idx]= new node();
+            }
+            curr=curr->child[idx];
         }
-        t->isend=1;
+        curr->isEnd=true;
     }
     bool find(const string &word,int index,node* t_root){
         int size=word.size();
@@ -39,7 +44,7 @@ public:
                 return 0;
             }
         }
-        return t_root->isend;
+        return t_root->isEnd;
     }
     bool search(string word){
         return find(word,0,root);
