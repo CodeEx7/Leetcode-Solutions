@@ -29,8 +29,7 @@ public:
         curr->isEnd=true;
     }
     bool find(const string &word,int index,node* t_root){
-        int size=word.size();
-        for(;index<size;++index){
+        for(;index<word.size();++index){
             if(word[index]=='.'){
                 for(int i=0;i<26;++i){
                     if(t_root->child[i] and find(word,index+1,t_root->child[i])){
