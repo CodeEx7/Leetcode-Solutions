@@ -3,7 +3,6 @@ public:
     void backtrack(vector<int> &nums, vector<vector<int>> &res, int begin){
         if(begin==nums.size()){
                 res.emplace_back(nums);
-                //s.insert(nums);
                 return;
         }
         for(int i=begin; i<nums.size();i++){
@@ -16,7 +15,6 @@ public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> res;
         sort(nums.begin(), nums.end());
-        //set<vector<int>> s;
         backtrack(nums, res, 0);
         return res;
     }
