@@ -11,16 +11,15 @@
  */
 class Solution {
 public:
-    bool helper(TreeNode* root, TreeNode* min, TreeNode* max){
-        if(root==NULL) return true;
-        if(min!=NULL && root->val <= min->val) return false;
-        if(max!=NULL && root->val >= max->val) return false;
-        
-        return helper(root->left, min, root) && helper(root->right, root, max);
-    }
-    
     bool isValidBST(TreeNode* root) {
-        if(root==NULL) return true;
-        return helper(root, NULL, NULL);
+        TreeNode* prev = NULL;
+        return validate(root, prev);
+    }
+    bool validate(TreeNode* node, TreeNode* &prev) {
+        if (node == NULL) return true;
+        if (!validate(node->left, prev)) return false;
+        if (prev != NULL && prev->val >= node->val) return false;
+        prev = node;
+        return validate(node->right, prev);
     }
 };
