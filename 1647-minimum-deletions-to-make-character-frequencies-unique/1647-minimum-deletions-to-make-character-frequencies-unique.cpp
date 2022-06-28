@@ -1,32 +1,25 @@
 class Solution {
 public:
     int minDeletions(string s) {
-       vector<int> freq(26, 0);
-        for(auto ch:s){ //O(n)
-            freq[ch-'a']++;
+        // Store the frequency of each character
+        vector<int> frequency(26, 0);
+        for (char c : s) {
+            frequency[c - 'a']++;
         }
         
-        int res=0;
-        unordered_set<int> st;
-        st.insert(freq[0]);
-        for(int i=1;i<26;i++){ //constant time complexity
-            if(st.find(freq[i])!=st.end()){
-                int temp=freq[i];
-                while(temp>0){ //O(K) k is max size of a char
-                    if(st.find(temp)!=st.end()){
-                        res++;
-                        temp--;
-                    }else{
-                        st.insert(temp);
-                        break;
-                    }
-                }
-            }else{
-                st.insert(freq[i]);
+        int deleteCount = 0;
+        // Use a set to store the frequencies we have already seen
+        unordered_set<int> seenFrequencies;
+        for (int i = 0; i < 26; i++) {
+            // Keep decrementing the frequency until it is unique
+            while (frequency[i] && seenFrequencies.find(frequency[i]) != seenFrequencies.end()) {
+                frequency[i]--;
+                deleteCount++;
             }
+            // Add the newly occupied frequency to the set
+            seenFrequencies.insert(frequency[i]);
         }
-        return res;
+        
+        return deleteCount;
     }
 };
-
-//Time complexity=> O(n)+26*O(K)
