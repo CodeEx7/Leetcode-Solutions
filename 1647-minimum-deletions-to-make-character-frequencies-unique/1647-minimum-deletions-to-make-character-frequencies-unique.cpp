@@ -2,20 +2,14 @@ class Solution {
 public:
     int minDeletions(string s) {
        vector<int> freq(26, 0);
-        for(auto ch:s){
+        for(auto ch:s){ //O(n)
             freq[ch-'a']++;
         }
-        //sort(freq.begin(), freq.end());        
-        
-        // priority_queue<int> pq;
-        // for(auto ch:freq){
-        //     pq.push(ch);
-        // }
         
         int res=0;
         unordered_set<int> st;
         st.insert(freq[0]);
-        for(int i=1;i<freq.size();i++){
+        for(int i=1;i<26;i++){
             if(st.find(freq[i])!=st.end()){
                 int temp=freq[i];
                 while(temp>0){
