@@ -22,3 +22,6 @@ public:
         return res;
     }
 };
+
+//space=> O(1)
+//time=> O(nlogn)
