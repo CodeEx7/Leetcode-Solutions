@@ -7,7 +7,7 @@ public:
             
             if(nums[mid]==target) return mid;
             
-            else if(nums[mid] >= nums[start]){
+            if(nums[mid] >= nums[start]){
                 if(target >= nums[start] && target < nums[mid])
                     end=mid-1;
                 else
