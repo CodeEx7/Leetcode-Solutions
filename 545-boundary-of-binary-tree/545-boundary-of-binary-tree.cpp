@@ -11,29 +11,30 @@
  */
 class Solution {
 public:
-	vector<int> ans;
-    void leftBoundary(TreeNode* root){
+	
+    void leftBoundary(TreeNode* root, vector<int> &ans){
         if (!root || (root->left == NULL && root->right == NULL)) return;
         ans.push_back(root->val);
-        leftBoundary(root->left ? root->left: root->right);
+        leftBoundary((root->left ? root->left: root->right), ans);
     }
-    void leaves(TreeNode* root){
+    void leaves(TreeNode* root, vector<int> &ans){
         if(!root) return;
-        leaves(root->left);
+        leaves(root->left, ans);
         if((root->left == NULL && root->right == NULL)) ans.push_back(root->val);
-        leaves(root->right);
+        leaves(root->right, ans);
     }
-    void rightBoundary(TreeNode* root){
+    void rightBoundary(TreeNode* root, vector<int> &ans){
         if (!root || (root->left == NULL && root->right == NULL)) return;
-        rightBoundary(root->right ? root->right: root->left);
+        rightBoundary((root->right ? root->right: root->left), ans);
         ans.push_back(root->val);
     }
     vector<int> boundaryOfBinaryTree(TreeNode* root) {
+        vector<int> ans;
         if(!root) return ans;
         ans.push_back(root->val);
-        leftBoundary(root->left);
-        if((root->left != NULL || root->right != NULL)) leaves(root);
-        rightBoundary(root->right);
+        leftBoundary(root->left, ans);
+        if((root->left != NULL || root->right != NULL)) leaves(root, ans);
+        rightBoundary(root->right, ans);
         return ans;
     }
 };
