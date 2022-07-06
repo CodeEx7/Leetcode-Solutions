@@ -15,7 +15,8 @@ public:
     void leftBoundary(TreeNode* root){
         if (!root || (root->left == NULL && root->right == NULL)) return;
         ans.push_back(root->val);
-        leftBoundary(root->left ? root->left: root->right);
+        if(root->left) leftBoundary(root->left);
+        else leftBoundary(root->right);
     }
     void leaves(TreeNode* root){
         if(!root) return;
