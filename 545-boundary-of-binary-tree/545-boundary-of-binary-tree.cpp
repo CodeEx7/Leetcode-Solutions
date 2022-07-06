@@ -32,7 +32,7 @@ public:
         if(!root) return ans;
         ans.push_back(root->val);
         leftBoundary(root->left);
-        if(!(root->left == NULL && root->right == NULL)) leaves(root);
+        if((root->left != NULL || root->right != NULL)) leaves(root);
         rightBoundary(root->right);
         return ans;
     }
