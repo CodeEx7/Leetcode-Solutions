@@ -19,7 +19,7 @@ public:
             p.push({arr[i],i});
             // remove all the elments which are not in the current window
             // current window is from [i-k+1 , i]
-            while(!(p.top().second > i-k))
+            while((p.top().second <= i-k))
                 p.pop();
             // add the max element in the PQ to the res
             res.push_back(p.top().first);
