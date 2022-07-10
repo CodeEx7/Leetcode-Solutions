@@ -11,7 +11,6 @@ public:
             }
         }
          for(int i=0;i<k-1;i++){
-            cout<<pq.top()<<" ";
             pq.pop();
         }
         return pq.top();
