@@ -1,15 +1,10 @@
 class Solution {
 public:
-    char shiftLetter(char letter, int shift) {
-        return (letter - shift + 26) % 26 + 'a';
-    }
     //getiing hash Key
-    string getHash(string s){
-        int shift = s[0];
+    string getHash(string &s){
         string hashKey;
-        
-        for (char letter : s) {
-            hashKey += shiftLetter(letter, shift);
+        for (int i = 1; i < s.length(); i++) {
+            hashKey += (s[i] - s[i - 1] + 26) % 26 + 'a';
         }
         
         return hashKey;
