@@ -35,6 +35,10 @@ class Solution
                     sum[k] += matrix[j][k];
                 }
                 count += subarraySum(sum, target);
+                // for(auto i:sum){
+                //     cout<<i<<" ";
+                // }
+                cout<<endl;
             }
         }
 
