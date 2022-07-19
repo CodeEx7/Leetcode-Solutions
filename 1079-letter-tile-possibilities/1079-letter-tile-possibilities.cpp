@@ -1,13 +1,13 @@
 class Solution {
 public:
     //helper function
-    void helper(string tiles, int idx, int &cnt){
+    void helper(string tiles, int level, int &cnt){
         cnt++;
-        for(int i=idx;i<tiles.size(); i++){
-            if(i!=idx && tiles[i]==tiles[idx])
-                continue;   // to skip same characters
-            swap(tiles[i], tiles[idx]);
-            helper(tiles, idx+1, cnt);
+        for(int i=level;i<tiles.size(); i++){
+            if(i!=level && tiles[i]==tiles[level])
+                continue;
+            swap(tiles[i], tiles[level]);
+            helper(tiles, level+1, cnt);
         }
         
     }
