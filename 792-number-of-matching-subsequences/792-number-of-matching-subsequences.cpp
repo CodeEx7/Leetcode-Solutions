@@ -1,15 +1,13 @@
+//time complexity O(M*N*log(S)) where M is number of words, N is max Len of a word and S is Len of given 's'.
 class Solution {
 public:
     //helper function
     bool helper(string word, unordered_map<char, vector<int>> &mapp){
         int prev_idx=-1;
         for(int i=0;i<word.size();i++){
-            if(mapp.find(word[i])==mapp.end()) return false;
-            
-            auto it=upper_bound(mapp[word[i]].begin(), mapp[word[i]].end(), prev_idx);
-            
-            if(it==mapp[word[i]].end()) return false;
-            
+            if(mapp.find(word[i])==mapp.end()) return false;            
+            auto it=upper_bound(mapp[word[i]].begin(), mapp[word[i]].end(), prev_idx);            
+            if(it==mapp[word[i]].end()) return false;            
             prev_idx=*it;
         }
         return true;
