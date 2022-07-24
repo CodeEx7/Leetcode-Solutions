@@ -2,7 +2,7 @@ class Solution {
 public:
     //helper function
     void helper(vector<int> &nums, vector<vector<int>> &res, vector<int> &subset, int idx){
-        if(idx==nums.size()){
+        if(idx>=nums.size()){
             res.push_back(subset);
             return;
         }
