@@ -3,11 +3,11 @@ class Solution {
         res.push_back(temp);
         
         for(int i=pos; i<nums.size(); ++i){
-            if(i != pos && nums[i] == nums[i - 1]) continue;
+            if(i == pos || nums[i] != nums[i - 1]){
             temp.push_back(nums[i]);
             helper(res, temp, nums, i + 1);
             temp.pop_back();
-            
+            }
         }
     }
     
