@@ -1,26 +1,22 @@
 class Solution {
-public:
-    //helper function
-    void helper(vector<int> &nums, vector<vector<int>> &res, vector<int> subset, int idx, set<vector<int>> &unique){
-        if(idx==nums.size()){
-            sort(subset.begin(), subset.end());
-            if(unique.find(subset)==unique.end())
-                res.push_back(subset);
-            unique.insert(subset);
-            return;
-        }
-        subset.push_back(nums[idx]);
-        helper(nums, res, subset, idx+1, unique);
-        subset.pop_back();
+    void helper(vector<vector<int>>& res, vector<int>& temp, vector<int>& nums, int pos){
+        res.push_back(temp);
         
-        helper(nums, res, subset, idx+1, unique);
+        for(int i=pos; i<nums.size(); ++i){
+            if(i != pos && nums[i] == nums[i - 1]) continue;
+            temp.push_back(nums[i]);
+            helper(res, temp, nums, i + 1);
+            temp.pop_back();
+            
+        }
     }
-    //main working function;
+    
+public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         vector<vector<int>> res;
-        vector<int> subset;
-        set<vector<int>> unique;
-        helper(nums, res, subset, 0, unique);
+        vector<int> temp;
+        sort(nums.begin(), nums.end());
+        helper(res, temp, nums, 0);
         return res;
     }
 };
