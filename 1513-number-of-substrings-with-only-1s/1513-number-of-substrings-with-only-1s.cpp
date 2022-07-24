@@ -9,7 +9,7 @@ public:
                 cnt++;
             }else{
                 ans+=(cnt*(cnt+1)/2);
-                    ans=ans%1000000007;
+                ans=ans%1000000007;
                 cnt=0;
             }
         }
