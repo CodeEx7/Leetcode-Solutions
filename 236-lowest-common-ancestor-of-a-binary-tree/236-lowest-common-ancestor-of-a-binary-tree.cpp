@@ -25,9 +25,7 @@ public:
         
         if(left==NULL){
             return right;
-        }else{
-            return left;
         }
-        return NULL;
+        return left;
     }
 };
