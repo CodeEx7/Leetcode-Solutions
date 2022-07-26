@@ -10,18 +10,42 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(root->val==p->val || root->val==q->val)
-            return root;
-        if(root->left==NULL and root->right==NULL)
-            return NULL;
-        
-        TreeNode *left=NULL,*right=NULL;
-        if(root->left)
-            left = lowestCommonAncestor(root->left,p,q);
-        if(root->right)
-            right = lowestCommonAncestor(root->right,p,q);
-        if(left && right)
-            return root;
-        return (right==NULL)?left:right;
+    stack<TreeNode*> path_p, path_q;
+    get_path_to_node(root, p, path_p);
+    get_path_to_node(root, q, path_q);
+    
+    return lca_from_paths(path_p, path_q);
+  }
+  
+private:
+  bool get_path_to_node(TreeNode* root, TreeNode* node, 
+      stack<TreeNode*>& path) {
+    if (!root) {
+      return false;
     }
+    
+    if (root == node || 
+        get_path_to_node(root->left, node, path) ||
+        get_path_to_node(root->right, node, path)) {
+      path.push(root);
+      return true;
+    }
+    
+    return false;
+  }
+  
+  TreeNode* lca_from_paths(stack<TreeNode*>& path1,
+      stack<TreeNode*>& path2) {    
+    TreeNode* lca = NULL;
+    while (!path1.empty() && !path2.empty()) {
+      if (path1.top() != path2.top()) {
+        break;
+      }
+      
+      lca = path1.top();
+      path1.pop(), path2.pop();
+    }
+    
+    return lca;
+  }
 };
