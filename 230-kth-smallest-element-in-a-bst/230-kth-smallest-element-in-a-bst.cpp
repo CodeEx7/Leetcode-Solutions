@@ -12,19 +12,14 @@
 class Solution {
 public:
     void helper(TreeNode *root, int &k, int &small){
-        if(root==NULL) return;
+        if(root!=NULL){
             helper(root->left, k, small);
-            k--;
-            if(k==0){
-                small=root->val;
-                return;
-            } 
+            if(--k==0) small=root->val;
             helper(root->right, k, small);
+        }
     }
-    
-    
     int kthSmallest(TreeNode* root, int k) {
-         int small;
+         int small=0;
         
         helper(root, k, small);
         
