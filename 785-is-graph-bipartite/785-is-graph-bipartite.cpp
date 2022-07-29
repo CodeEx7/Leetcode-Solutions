@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //BFS function
+    //DFS function
     bool DFS(int s, vector<int> &color, vector<bool> &vis, vector<vector<int>> &graph, int col){
         if(col==0)
             col=1;
