@@ -1,26 +1,28 @@
 class Solution {
 public:
-    //normalise function
-    string normalise(string word){
-        char c='a';
-        unordered_map<char, char> mapp;
-        for(auto ch:word){
-            if(mapp.find(ch)==mapp.end()){
-                mapp[ch] = c;
-                c++;
+    bool check(string word, string pattern){
+        unordered_map<char, char> w2p;
+        unordered_map<char, char> p2w;
+        
+        for(int i=0; i<word.size();i++){
+            if(w2p.find(word[i])!=w2p.end()){
+                if(w2p[word[i]]!=pattern[i]) return false;
+            }else{
+                w2p[word[i]]=pattern[i];
             }
+            
+            if(p2w.find(pattern[i])!=p2w.end()){
+                if(p2w[pattern[i]]!=word[i]) return false;
+            }else{
+                p2w[pattern[i]]=word[i];
+            }            
         }
-        for(int i=0;i<word.size();i++){
-            word[i]=mapp[word[i]];
-        }
-        return word;
+        return true;
     }
-    //main working function
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
         vector<string> res;
-        string norm_pattern=normalise(pattern);
         for(auto word:words){
-            if(normalise(word)==norm_pattern){
+            if(check(word, pattern)==true){
                 res.push_back(word);
             }
         }
