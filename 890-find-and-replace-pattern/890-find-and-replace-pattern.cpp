@@ -8,7 +8,7 @@ public:
             if(w2p.find(word[i])!=w2p.end()){
                 if(w2p[word[i]]!=pattern[i]) return false;
             }else{
-                w2p.insert({word[i],pattern[i]});
+                w2p[word[i]]=pattern[i];
                 }
             if(p2w.find(pattern[i])!=p2w.end()){
                 if(p2w[pattern[i]]!=word[i]) return false;
