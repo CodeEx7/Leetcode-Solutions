@@ -2,25 +2,26 @@ class Solution {
 public:
     string normalise(string word){
         unordered_map<char, char> mapp;
-        char temp='a';
+        char c='a';
         for(auto ch:word){
             if(mapp.find(ch)==mapp.end()){
-                mapp[ch]=temp;
-                temp++;
+                mapp[ch]=c;
+                c++;
             }
         }
         
-        for(int i=0;i<word[i];i++){
+        for(int i=0;i<word.size();i++){
             word[i]=mapp[word[i]];
         }
         return word;
     }
+    
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
         vector<string> res;
-        string norm_pattern=normalise(pattern);
+        string normalise_pattern=normalise(pattern);
         
         for(auto word:words){
-            if(normalise(word)==norm_pattern){
+            if(normalise(word)==normalise_pattern){
                 res.push_back(word);
             }
         }
