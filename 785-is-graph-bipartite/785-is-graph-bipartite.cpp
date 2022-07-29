@@ -1,24 +1,23 @@
 class Solution {
 public:
     //BFS function
-    bool BFS(int s, vector<int> &color, vector<bool> &vis, vector<vector<int>> &graph){
-        queue<int> q;
-        q.push(s);
-        color[s]=0;
+    bool DFS(int s, vector<int> &color, vector<bool> &vis, vector<vector<int>> &graph, int col){
+        if(col==0)
+            col=1;
+        else
+            col=0;
+        
+        color[s]=col;
+        
         vis[s]=true;
         
-        while(!q.empty()){
-            int u=q.front();
-            q.pop();
-            for(auto v:graph[u]){
-                if(vis[v]==false){
-                    q.push(v);
-                    vis[v]=true;
-                    if(color[u]==0) color[v]=1;
-                    else color[v]=0;
-                } else if(color[v]==color[u]){
+        for(auto u:graph[s]){
+            if(vis[u]==false){
+                if(DFS(u,color, vis, graph, col)==false){
                     return false;
                 }
+            }else if(color[u]==color[s]){
+                return false;
             }
         }
         return true;
@@ -28,10 +27,11 @@ public:
         int V=graph.size();
         vector<int> color(V+1);
         vector<bool> vis(V+1, false);
+        int col=0;
         
         for(int i=0;i<V;i++){
             if(vis[i]==false){
-                if(BFS(i, color, vis, graph)==false) return false;
+                if(DFS(i, color, vis, graph, col)==false) return false;
             }
         }
         return true;
