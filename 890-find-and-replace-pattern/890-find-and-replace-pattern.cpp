@@ -1,28 +1,26 @@
 class Solution {
 public:
-    bool check(string word, string pattern){
-        unordered_map<char, char> w2p;
-        unordered_map<char, char> p2w;
-        
-        for(int i=0; i<word.size();i++){
-            if(w2p.find(word[i])!=w2p.end()){
-                if(w2p[word[i]]!=pattern[i]) return false;
-            }else{
-                w2p[word[i]]=pattern[i];
+    string normalise(string word){
+        unordered_map<char, char> mapp;
+        char temp='a';
+        for(auto ch:word){
+            if(mapp.find(ch)==mapp.end()){
+                mapp[ch]=temp;
+                temp++;
             }
-            
-            if(p2w.find(pattern[i])!=p2w.end()){
-                if(p2w[pattern[i]]!=word[i]) return false;
-            }else{
-                p2w[pattern[i]]=word[i];
-            }            
         }
-        return true;
+        
+        for(int i=0;i<word[i];i++){
+            word[i]=mapp[word[i]];
+        }
+        return word;
     }
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
         vector<string> res;
+        string norm_pattern=normalise(pattern);
+        
         for(auto word:words){
-            if(check(word, pattern)==true){
+            if(normalise(word)==norm_pattern){
                 res.push_back(word);
             }
         }
