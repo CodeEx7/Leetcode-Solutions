@@ -6,7 +6,8 @@ public:
         unordered_map<char, char> mapp;
         for(auto ch:word){
             if(mapp.find(ch)==mapp.end()){
-                mapp[ch] = c++;
+                mapp[ch] = c;
+                c++;
             }
         }
         for(int i=0;i<word.size();i++){
