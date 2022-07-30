@@ -16,7 +16,7 @@ public:
         }
         return true;
     }
-    
+    //making super of the words
     void make_super(string word, unordered_map<char,int> &mapp){
         unordered_map<char, int> curr;
         for(auto ch:word){
