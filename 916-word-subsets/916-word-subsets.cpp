@@ -1,56 +1,46 @@
 class Solution {
 public:
-    bool isSubset(string word1, string word2){
-        unordered_map<char,int> mapp;
-        for(auto ch:word1){
-            mapp[ch]++;
+    //issubset function
+    bool isSubset(string word, vector<char> cnt){
+        vector<char> curr(26, 0);
+        for(auto ch: word){
+            curr[ch-'a']++;
         }
-        
-        for(auto ch:word2){
-            if(mapp.find(ch)!=mapp.end()){
-                mapp[ch]--;
-                if(mapp[ch]==0) mapp.erase(ch);
-            }else{
+        for(int i=0;i<26;i++){
+            if(curr[i]<cnt[i]){
                 return false;
-            }             
+            }
         }
         return true;
     }
-    //making super of the words
-    void make_super(string word, unordered_map<char,int> &mapp){
-        unordered_map<char, int> curr;
+    //super set function
+    void super(string word, vector<char> &cnt){
+        vector<char> curr(26,0);
         for(auto ch:word){
-            curr[ch]++;
+            curr[ch-'a']++;
         }
-        for(auto it:curr){
-            if(mapp.find(it.first)==mapp.end()){
-                mapp.insert({it.first, it.second});
-            }else{
-                mapp[it.first]=max(mapp[it.first], curr[it.first]);
-            }
+        for(int i=0;i<26;i++){
+            cnt[i]=max(cnt[i], curr[i]);
         }
     }
     //main working function
     vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) {
         vector<string> res;
-        string super="";
-        unordered_map<char, int> mapp;
+        string superset="";
+        vector<char> cnt(26,0);
+        //mapping first word
         for(auto ch:words2[0]){
-            mapp[ch]++;
+            cnt[ch-'a']++;
         }
+        //for remaining word
         for(int i=1;i<words2.size();i++){
-            make_super(words2[i], mapp);
+            super(words2[i], cnt);
         }
         
-        for(auto it:mapp){
-            while(it.second--){
-                super+=it.first;
-            }
-        }
-        
-        for(auto word1:words1){
-            if(isSubset(word1, super)==true){
-                res.push_back(word1);
+        //comparing with each word of words1 array
+        for(auto word:words1){
+            if(isSubset(word, cnt)==true){
+                res.push_back(word);
             }
         }
         return res;
