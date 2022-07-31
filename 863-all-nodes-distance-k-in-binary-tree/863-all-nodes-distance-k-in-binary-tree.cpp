@@ -12,8 +12,8 @@ public:
     //find parent
     void findParent(unordered_map<TreeNode*, TreeNode*> &parent, TreeNode *root){
         if(root==NULL) return;
-        if(root->left) parent.insert({root->left, root});
-        if(root->right) parent.insert({root->right, root});
+        if(root->left) parent[root->left]= root;
+        if(root->right) parent[root->right]=root;
         
         findParent(parent, root->left);
         findParent(parent, root->right);
