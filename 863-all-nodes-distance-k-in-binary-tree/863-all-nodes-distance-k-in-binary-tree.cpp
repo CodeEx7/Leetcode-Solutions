@@ -44,7 +44,7 @@ public:
                 if(parent.find(temp)!=parent.end() && vis.find(parent[temp])==vis.end()) q.push(parent[temp]);
             }
             k--;
-            if(k<0) break;
+           // if(k<0) break;
         }
         return res;
     }
