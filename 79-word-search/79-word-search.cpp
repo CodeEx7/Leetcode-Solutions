@@ -16,7 +16,7 @@ public:
         if(i<0 || i>=board.size() || j<0 || j>=board[0].size() || board[i][j]!=word[index]) return false;
         
         char temp=board[i][j];
-        board[i][j]=' ';
+        board[i][j]='#';
         
         if(DFS(board,i+1,j,index+1,word) ||
             DFS(board,i-1,j,index+1,word) ||
