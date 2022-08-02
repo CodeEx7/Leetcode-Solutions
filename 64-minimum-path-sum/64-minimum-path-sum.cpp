@@ -2,7 +2,7 @@ class Solution {
 public:
     //helper function
     int helper(vector<vector<int>>& grid, int i, int j, int m, int n, vector<vector<int>>& memo){
-        if(i==m-1 && j==n-1) return memo[i][j]=grid[i][j];
+        if(i==m-1 && j==n-1) return grid[i][j];
         if(i>=m || j>=n) return INT_MAX;
         if(memo[i][j]!=-1) return memo[i][j];
         
