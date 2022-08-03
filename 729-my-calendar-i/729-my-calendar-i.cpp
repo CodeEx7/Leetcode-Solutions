@@ -7,7 +7,7 @@ public:
     
     bool book(int start, int end) {
         for(auto it:cal){
-            if(it.first<end && start<it.second){
+            if(max(it.first, start)<min(it.second, end)){
                 return false;
             }
         }
