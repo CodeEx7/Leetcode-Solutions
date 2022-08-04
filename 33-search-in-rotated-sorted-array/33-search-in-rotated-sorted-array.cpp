@@ -14,18 +14,18 @@ public:
     return left;
 }
 
-int binarySearch(vector<int>& nums, int s, int e, int target){    
-    while(s<=e){
-        int mid = s+(e-s)/2;
+int binarySearch(vector<int>& nums, int left, int right, int target){    
+    while(left<=right){
+        int mid=left+(right-left)/2;
         
         if(nums[mid]==target)
             return mid;
         
         else if(nums[mid]<target)
-            s=mid+1;
+            left=mid+1;
         
         else
-            e=mid-1;
+            right=mid-1;
     }
     return -1;
 }
