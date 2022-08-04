@@ -1,20 +1,20 @@
 class Solution {
 public:
     bool isValid(string s) {
+        if(s.size()==0) return true;
         stack<char> st;
-      for(auto c:s){
-          if(c=='(' || c=='[' || c=='{'){
-              st.push(c);
-          }
-          else{
-              if(st.size() == 0) return false; 
-              char nc=st.top();
-              st.pop();
-              if(nc=='(' && c!=')') return false;
-              if(nc=='{' && c!='}') return false;
-              if(nc=='[' && c!=']') return false;
-          }
-      }
-        return st.empty();
+        for(auto ch:s){
+            if(ch=='(' or ch=='{' or ch=='['){
+                st.push(ch);
+            }else{
+                if(st.size()==0) return false;
+                char curr=st.top();
+                st.pop();
+                if(curr=='(' && ch!=')') return false;
+                if(curr=='{' && ch!='}') return false;
+                if(curr=='[' && ch!=']') return false;
+            }
+        }
+        return (st.size()==0);
     }
 };
