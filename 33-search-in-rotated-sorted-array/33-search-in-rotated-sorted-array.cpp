@@ -32,12 +32,13 @@ int binarySearch(vector<int>& nums, int s, int e, int target){
 
 int search(vector<int>& nums, int target) {
     int pivot = findPivot(nums);
+    int answer;
     
     if(nums[pivot]<=target && target<=nums[nums.size()-1])
-        return binarySearch(nums, pivot, nums.size()-1, target);
+        answer = binarySearch(nums, pivot, nums.size()-1, target);
     else
-        return binarySearch(nums, 0, pivot-1, target);
+        answer = binarySearch(nums, 0, pivot-1, target);
     
-    return -1;
+    return answer;
 }
 };
