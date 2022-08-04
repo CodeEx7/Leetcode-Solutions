@@ -10,9 +10,9 @@ public:
                 if(st.size()==0) return false;
                 char curr=st.top();
                 st.pop();
-                if(curr=='(' && ch!=')') return false;
-                if(curr=='{' && ch!='}') return false;
-                if(curr=='[' && ch!=']') return false;
+                if(curr=='(' and ch!=')') return false;
+                if(curr=='{' and ch!='}') return false;
+                if(curr=='[' and ch!=']') return false;
             }
         }
         return (st.size()==0);
