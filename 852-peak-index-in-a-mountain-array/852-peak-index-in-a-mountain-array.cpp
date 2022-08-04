@@ -10,6 +10,6 @@ public:
                 right=mid;
             }
         }
-        return right;
+        return left;
     }
 };
