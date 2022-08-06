@@ -9,7 +9,7 @@ public:
     
     int next(int price) {
         day++;
-        while(s.top().first <= price){ s.pop(); }
+        while(s.top().first <= price)   s.pop();
         int span = day - s.top().second;
         s.push({price, day});
         return span;
