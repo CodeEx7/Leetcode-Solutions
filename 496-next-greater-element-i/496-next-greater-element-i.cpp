@@ -13,7 +13,7 @@ public:
                     st.pop();
                 }
                 if(st.empty()) res.push_back(-1);
-                else if(st.size()>0 and st.top()>nums[i]){
+                else{
                 res.push_back(st.top());
             }
         }
