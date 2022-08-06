@@ -8,7 +8,7 @@ public:
             if(st.empty()) res.push_back(-1);
             else if(st.size()>0 and st.top()>nums[i]){
                 res.push_back(st.top());
-            }else if(st.size()>0 && st.top()<=nums[i]){
+            }else{
                 while(st.size()>0 && st.top()<=nums[i]){
                     st.pop();
                 }
