@@ -4,11 +4,11 @@ public:
         int n=nums.size();
         long long res=0;
         for(int i=0;i<n-1;i++){
-            int ma = nums[i], mi = nums[i];
+            int maxi = nums[i], mini = nums[i];
             for(int j=i+1;j<n;j++){
-                ma=max(ma, nums[j]);
-                mi=min(mi, nums[j]);
-                res+=ma-mi;
+                maxi=max(maxi, nums[j]);
+                mini=min(mini, nums[j]);
+                res+=maxi-mini;
             }
         }
         return res;
