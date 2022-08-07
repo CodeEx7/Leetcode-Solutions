@@ -48,8 +48,7 @@ public:
         
         int maxi=INT_MIN;
         for(int i=0;i<heights.size();i++){
-            int val=NSR[i]-NSL[i];
-            maxi=max(maxi, heights[i]*(val-1));
+            maxi=max(maxi, heights[i]*(NSR[i]-NSL[i]-1));
         }
        return maxi; 
     }
