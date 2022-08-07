@@ -1,6 +1,6 @@
 class Solution {
 public:
-        //NSL
+        //NSL nearest smaller left
     void findNSL(vector<int> &nums, vector<int> &NSL){
         stack<pair<int,int>> st;
         for(int i=0;i<nums.size();i++){
@@ -19,7 +19,7 @@ public:
     }
 }
     
-    //NSR
+    //NSR nearest smaller right
     void findNSR(vector<int> &nums, vector<int> &NSR){
         stack<pair<int,int>> st;
         int n=nums.size();
