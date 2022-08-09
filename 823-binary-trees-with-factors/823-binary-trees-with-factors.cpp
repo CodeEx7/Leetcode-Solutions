@@ -12,7 +12,7 @@ public:
             for(int j=0;j<i;j++){
                 if(arr[i]%arr[j]==0){
                     if(mapp.find(arr[i]/arr[j])!=mapp.end()){
-                        cnt+=(mapp[arr[j]]*mapp[arr[i]/arr[j]]);
+                        cnt+=(mapp[arr[j]]*mapp[arr[i]/arr[j]])%mod;
                     }
                 }
             }
