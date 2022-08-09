@@ -17,6 +17,7 @@ public:
                 }
             }
             mapp[arr[i]]+=cnt;
+            mapp[arr[i]]%=mod;
         }
         long long int res=0;
         for(auto it:mapp){
