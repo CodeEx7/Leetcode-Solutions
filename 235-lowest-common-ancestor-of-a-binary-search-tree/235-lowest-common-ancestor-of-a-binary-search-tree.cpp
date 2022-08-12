@@ -10,21 +10,17 @@
 
 class Solution {
 public:
-    //best approch till now.
-    
-    //Loved it.
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        int parentVal=root->val;
+        if(root==NULL) return NULL;
+        if(root->val==p->val || root->val==q->val) return root;
         
-        int pval=p->val;
+        TreeNode *left=lowestCommonAncestor(root->left,  p, q);
+        TreeNode *right=lowestCommonAncestor(root->right,  p, q);
         
-        int qval=q->val;
+        if(left!=NULL and right!=NULL) return root;
         
-        if(pval>parentVal && qval>parentVal)
-            return lowestCommonAncestor(root->right, p, q);
-        else if(pval<parentVal && qval<parentVal)
-            return lowestCommonAncestor(root->left, p, q);
-        else
-            return root;
+        else if(left==NULL) return right;
+        
+        return left;
     }
 };
