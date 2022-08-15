@@ -9,8 +9,8 @@ public:
                 res-=stov[s[i]];
             }else{
                 res+=stov[s[i]];
-            }
                 prev_max=stov[s[i]];
+            }
         }
         return res;
     }
