@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isPossible(vector<int>& nums) {
-        map<int,int> m,m1;
+        unordered_map<int,int> m,m1;
         for(int i=0;i<nums.size();i++){
             m[nums[i]]++;
         }
