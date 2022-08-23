@@ -10,19 +10,48 @@
  */
 class Solution {
 public:
-    bool isPalindrome(ListNode* head) {
-        vector<int> temp;
-        while(head!=NULL){
-            temp.push_back(head->val);
-            head=head->next;
+    //finding mid
+    ListNode* findMid(ListNode* head){
+        ListNode *slow=head, *fast=head;
+        
+        while(fast!=NULL && fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next;
+            if(fast) fast=fast->next;
         }
-        int left=0, right=temp.size()-1;
-        while(left<right){
-            if(temp[left]!=temp[right]){
+        return slow;
+    }
+    
+    //reverse the linkLst
+    ListNode *reverse(ListNode *head){
+        ListNode *prev=NULL, *curr=head, *temp=NULL;
+        
+        while(curr!=NULL){
+            temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
+        }
+        return prev;
+    }
+    
+    //comparing the lists
+    bool compare(ListNode* head1, ListNode* head2){
+        
+        while(head1!=NULL && head2!=NULL){
+            if(head1->val!=head2->val){
                 return false;
             }
-            left++, right--;
+            head1=head1->next;
+            head2=head2->next;
         }
         return true;
+    }
+    
+    bool isPalindrome(ListNode* head) {
+        ListNode* h=head;
+        ListNode *mid=findMid(h);
+        ListNode* h2=reverse(mid);
+        return compare(h,h2);        
     }
 };
