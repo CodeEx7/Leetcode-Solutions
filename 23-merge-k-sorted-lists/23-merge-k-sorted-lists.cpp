@@ -39,10 +39,7 @@ public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         if(lists.size()==0) return NULL;
         if(lists.size()==1){
-            if(lists[0]==NULL)
-                return NULL;
-            else
-                return lists[0];
+            return lists[0];
         } 
        ListNode* merged=Merge(lists[0], lists[1]);
         for(int i=2;i<lists.size();i++){
