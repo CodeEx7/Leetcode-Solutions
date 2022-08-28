@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //helper function
+    //helper function--->Using CountSort(when sorting range is limited we use count sort Method)
     void helpSort(vector<vector<int>> &mat, int row, int col){
         int m=mat.size(), n=mat[0].size();
         vector<int> temp(101,0);
