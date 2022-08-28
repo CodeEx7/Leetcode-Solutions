@@ -3,17 +3,21 @@ public:
     //helper function
     void helpSort(vector<vector<int>> &mat, int row, int col){
         int m=mat.size(), n=mat[0].size();
-        vector<int> temp;
+        vector<int> temp(101,0);
         for(int i=row,j=col;i<m && j<n; i++,j++){
-            temp.push_back(mat[i][j]);
+            temp[mat[i][j]]++;
         }
-        sort(temp.begin(),temp.end());
-        
-        for(int i=row,j=col, k=0;k<temp.size();i++,j++,k++){
-            mat[i][j]=temp[k];
+        int i=row,j=col;
+        for(int k=1;k<temp.size();k++){
+            while(temp[k]>0){
+                mat[i][j]=k;
+                i++;
+                j++;
+                temp[k]--;
+            }
         }
     }
-    //amin working function
+    //main working function
     vector<vector<int>> diagonalSort(vector<vector<int>>& mat) {
         int m=mat.size();
         int n=mat[0].size();
