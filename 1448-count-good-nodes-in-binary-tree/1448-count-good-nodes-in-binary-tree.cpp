@@ -26,7 +26,7 @@ public:
     int goodNodes(TreeNode* root) {
         int prev_max=INT_MIN;
         int cnt=0;
-        //if(root==NULL) return cnt;
+        if(root==NULL) return cnt;
         helper(root, prev_max, cnt);
         return cnt;
     }
