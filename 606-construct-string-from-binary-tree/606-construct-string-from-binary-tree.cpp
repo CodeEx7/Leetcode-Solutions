@@ -12,14 +12,16 @@
 class Solution {
 public:
     string tree2str(TreeNode* root) {
-        string res=to_string(root->val);
-        if(root->left){
-            res+="("+tree2str(root->left)+")";
+        if(root==NULL)  return "";
+        string str=to_string(root->val);
+        if(root->left || root->right){
+            str+="("+tree2str(root->left)+")";
+            if(root->right){
+                str+="("+tree2str(root->right)+")";
+            }
         }
-        if(root->right){
-            if(!root->left) res+="()";
-            res+="("+tree2str(root->right)+")";
-        }
-        return res;
+        
+        //str.replace("()","");
+        return str;
     }
 };
