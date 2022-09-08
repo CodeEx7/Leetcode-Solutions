@@ -13,7 +13,7 @@ public:
                 ans*=current_product;
             }
             current_product*=current_product;
-            cout<<ans<<" ";
+            //cout<<ans<<" ";
         }
         return ans;
     }
