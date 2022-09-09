@@ -10,10 +10,6 @@ public:
                 }
             }
         }
-        int res=0;
-        for(auto it:lis){
-            res=max(res,it);
-        }
-        return res;
+        return *max_element(lis.begin(), lis.end());
     }
 };
