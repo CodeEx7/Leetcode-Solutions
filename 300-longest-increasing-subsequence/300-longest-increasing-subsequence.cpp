@@ -13,3 +13,5 @@ public:
         return *max_element(lis.begin(), lis.end());
     }
 };
+
+//TC==> O(n^2)
