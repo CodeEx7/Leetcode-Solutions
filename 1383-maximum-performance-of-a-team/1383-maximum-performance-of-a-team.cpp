@@ -5,7 +5,7 @@ public:
         for (int i = 0; i < n; ++i)
             engineers.emplace_back(efficiency[i], speed[i]);
         
-        sort(rbegin(engineers), rend(engineers)); // Sort by decreasing order of efficiency
+        sort(engineers.begin(), engineers.end(), greater()); // Sort by decreasing order of efficiency
         long speedSum = 0, ans = 0;
         priority_queue<int, vector<int>, greater<int>> minHeap;
         for (auto it: engineers) {
