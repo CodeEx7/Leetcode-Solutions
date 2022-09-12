@@ -21,7 +21,7 @@ public:
                 cout<<power<<" ";
                 left++;
                 res=max(res, curr_power);
-            }else if(tokens[left]>power && curr_power>=1){
+            }else if(curr_power>=1){
                 curr_power--;
                 power+=tokens[right];
                 cout<<power<<" ";
