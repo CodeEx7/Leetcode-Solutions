@@ -21,34 +21,26 @@ public:
     //     }
     //     return true;
     // }
-    unordered_map<int,int> mapp;
+    // unordered_set<int> mapp;
     int res=0;
     //--------------------------------------------------------------
-    void helper(TreeNode *root){
+    void helper(TreeNode *root, int path){
         if(root==NULL) return;
         
-        mapp[root->val]++;
+        path^=(1<<root->val);
             
         if(root->left==NULL && root->right==NULL){
-            int flag=0;
-            for(auto it:mapp){
-                if(it.second%2!=0){
-                    flag++;
-                }
-                if(flag>1) break;
-            }
-            if(flag<=1) res++;
+            if((path&(path-1))==0) res++;
         }
         
-        helper(root->left);
-        helper(root->right);
-        mapp[root->val]--;
+        helper(root->left,path);
+        helper(root->right,path);
     }
     //-------------------------------------------
     int pseudoPalindromicPaths (TreeNode* root) {
         //int res=0;
         //unordered_map<int,int> mapp;
-        helper(root);
+        helper(root,0);
         return res;
     }
 };
