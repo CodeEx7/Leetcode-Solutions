@@ -1,5 +1,6 @@
-struct cmp {
+class cmp {
     int param;
+public:
     cmp(int x) : param(x) {}
 
     bool operator()(int a, int b) {
