@@ -14,20 +14,25 @@ public:
     void helper(TreeNode* root, int targetSum, vector<vector<int>> &res, vector<int> temp){
         if(root==NULL) return;
         
-        if(root->left==NULL && root->right==NULL && targetSum==root->val){
-            temp.push_back(root->val);
+        targetSum-=root->val;
+        temp.push_back(root->val);
+        
+        if(targetSum==0 && root->left==NULL && root->right==NULL){
             res.push_back(temp);
             return;
         }
-        temp.push_back(root->val);
-        helper(root->left, targetSum-root->val, res, temp);
-        helper(root->right, targetSum-root->val, res, temp);
+        
+        helper(root->left, targetSum, res, temp);
+        helper(root->right, targetSum, res, temp);
+        
     }
-    //------------------------------
+    //wejhfvwveefuklnwEFBK.JSHFF S kwdfbQWEM,F KJWFQ,qwf  SFBFmjff dwd wjddW.EKJF AEAFwefk wefhwEF/
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         vector<vector<int>> res;
         vector<int> temp;
+        
         helper(root, targetSum, res, temp);
+        
         return res;
     }
 };
