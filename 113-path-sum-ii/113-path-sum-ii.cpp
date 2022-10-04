@@ -15,10 +15,10 @@ public:
         if(root==NULL) return;
         
         targetSum-=root->val;
-        temp.push_back(root->val);
+        temp.emplace_back(root->val);
         
         if(targetSum==0 && root->left==NULL && root->right==NULL){
-            res.push_back(temp);
+            res.emplace_back(temp);
             return;
         }
         
