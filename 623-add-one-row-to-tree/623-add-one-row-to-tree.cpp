@@ -37,8 +37,6 @@ public:
             
             left_node->left=temp_left;
             right_node->right=temp_right;
-            
-            return head;
         }
         
         
