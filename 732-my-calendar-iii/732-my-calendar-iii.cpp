@@ -1,21 +1,24 @@
 class MyCalendarThree {
-private:
-    map<int, int> diff;
-
 public:
-    MyCalendarThree() {}
-
+    map<int,int> mapp;
+    MyCalendarThree() {
+        
+    }
+    
     int book(int start, int end) {
-        int cur = 0, res = 0;
-        diff[start]++;
-        diff[end]--;
-        for (auto& [_, delta] : diff) {
-            cur += delta;
-            res = max(res, cur);
+        mapp[start]++;
+        mapp[end]--;
+        
+        int res=0, count=0;
+        for(auto it:mapp){
+            count+=it.second;
+            
+            res=max(res,count);
         }
         return res;
     }
 };
+
 /**
  * Your MyCalendarThree object will be instantiated and called as such:
  * MyCalendarThree* obj = new MyCalendarThree();
