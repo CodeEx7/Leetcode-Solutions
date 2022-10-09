@@ -11,11 +11,11 @@
  */
 class Solution {
 public:
-    bool helper(TreeNode* root, unordered_map<int,int> &mapp, int k){
+    bool helper(TreeNode* root, unordered_set<int> &mapp, int k){
         if(root==NULL) return false;
         
         if(mapp.find(k-root->val)==mapp.end()){
-            mapp[root->val]++;
+            mapp.insert(root->val);
         }else{
             return true;
         }
@@ -23,7 +23,7 @@ public:
     }
     //--------------------------------
     bool findTarget(TreeNode* root, int k) {
-        unordered_map<int,int> mapp;
+        unordered_set<int> mapp;
         return helper(root, mapp, k);
     }
 };
