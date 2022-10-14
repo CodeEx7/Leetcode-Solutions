@@ -36,3 +36,6 @@ public:
         return head;
     }
 };
+
+//O(n)--counting total size and after doing n/2 deleted the node. Two traversal.
+
