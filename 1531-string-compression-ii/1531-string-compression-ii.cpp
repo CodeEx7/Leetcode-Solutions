@@ -20,3 +20,9 @@ public:
         return dfs(s, 0, k);
     }
 };
+/*dp[i][k] represent the minimum length of i-th index with k deletion.
+we can consider these situation, let's say the starting index is left, number of deletions is k:
+
+we delete s[left], which is dfs(left + 1, k - 1): moving to next index and k - 1;
+we use s[left] as an anchor, we iterate fromi whichi = left+1 to s.size(), if s[i] == s[left], then we can plus 1 to the count otherwise we need to delete it( s[i]) and then do --k.
+we can simply do if s.size() - left <= k return 0;.*/
